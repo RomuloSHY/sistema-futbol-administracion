@@ -17,7 +17,12 @@ CREATE TABLE producto(
 	nombre VARCHAR(100) NOT NULL,
 	precio NUMERIC(10,2) NOT NULL,
 	stock INTEGER NOT NULL,
-	activo BOOLEAN NOT NULL DEFAULT TRUE
+	activo BOOLEAN NOT NULL DEFAULT TRUE,
+
+	CONSTRAINT chk_stock_no_negativo
+	CHECK (stock >= 0),
+	CONSTRAINT chk_precio_no_negativo
+	CHECK (precio >=0)
 );
 
 CREATE TABLE venta(
