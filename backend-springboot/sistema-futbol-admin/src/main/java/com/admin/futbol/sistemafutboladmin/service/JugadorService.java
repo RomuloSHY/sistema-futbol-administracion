@@ -16,4 +16,8 @@ public class JugadorService {
     public List<Jugador> listarJugadores(){
         return jugadorRepository.findAll();
     }
+
+    public Jugador agregarJugador(Jugador jugador) {
+        return jugadorRepository.save(jugador);
+    }
 }

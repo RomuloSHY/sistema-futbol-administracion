@@ -2,9 +2,8 @@ package com.admin.futbol.sistemafutboladmin.controller;
 
 import com.admin.futbol.sistemafutboladmin.entity.Jugador;
 import com.admin.futbol.sistemafutboladmin.service.JugadorService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +19,11 @@ public class JugadorController {
     @GetMapping("/lista")
     public List<Jugador> listarJugadores(){
         return jugadorService.listarJugadores();
+    }
+
+    @PostMapping
+    public ResponseEntity<Jugador> agregarJugador(@RequestBody Jugador jugador) {
+        Jugador nuevoJugador = jugadorService.agregarJugador(jugador);
+        return ResponseEntity.ok(nuevoJugador);
     }
 }
